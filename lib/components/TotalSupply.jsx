@@ -12,12 +12,12 @@ export function TotalSupply() {
 
   let result = ''
   if (loading) {
-    result = <span>Loading...</span>
+    result = <div>Loading...</div>
   } else if (error) {
     console.error(error)
-    result = <span>Query Error: {error.message}</span>
+    result = <div>Query Error: {error.message}</div>
   } else {
-    result = <span>Total Supply: {data.totalSupply.toString()}</span>
+    result = <div>Total Supply: {data.totalSupply.toString()}</div>
   }
 
   return result

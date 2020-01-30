@@ -1001,10 +1001,10 @@
     fixidity DeltaCamp/Fixidity#edf533f77df43b16a7b92f17af7a8930db01f293
     scd-mcd-migration pooltogether/scd-mcd-migration
 
-"@pooltogether/tightbeam@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@pooltogether/tightbeam/-/tightbeam-0.2.3.tgz#0345fdb2df1abe30f0fce59d13758321299fe445"
-  integrity sha512-9Ta6zNQ9578Gj+ABTQ6iyy6YWbTvD8JoEFPt1sPt6zSTL5rgMEvettZ7JNvnWZwQzyjwBTv+orGavO08+dToyQ==
+"@pooltogether/tightbeam@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@pooltogether/tightbeam/-/tightbeam-0.3.0.tgz#05a2d1108e4e83e3a5067cbf272a53d86fea7741"
+  integrity sha512-605ar+tUZNTVJdfo5ockMBPePUykadn7YWJOLxnfwPBKcjmgYdD976VcI4zdp+Sjjyhuqu7NATgd+qBxAnWDtg==
   dependencies:
     debug "^4.1.1"
     lodash.merge "^4.6.2"
