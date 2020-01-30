@@ -18,7 +18,7 @@ export default function ApolloWrapper({ children }) {
     )
   } else if (error) {
     console.error(error)
-    result = <span>Error: {error.message}</span>
+    result = <span>Apollo Error: {error.message}</span>
   } else if (isPending) {
     result = <span>Loading...</span>
   }

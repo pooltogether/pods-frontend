@@ -15,7 +15,7 @@ export function TotalSupply() {
     result = <span>Loading...</span>
   } else if (error) {
     console.error(error)
-    result = <span>Error: {error.message}</span>
+    result = <span>Query Error: {error.message}</span>
   } else {
     result = <span>Total Supply: {data.totalSupply.toString()}</span>
   }
