@@ -9,6 +9,8 @@ if (process.env.NEXT_JS_FORTMATIC_CUSTOM_NODE_URL &&
     rpcUrl: process.env.NEXT_JS_FORTMATIC_CUSTOM_NODE_URL,
     chainId: process.env.NEXT_JS_FORTMATIC_CUSTOM_NODE_CHAIN_ID
   }
+} else if (process.env.NEXT_JS_FORTMATIC_NETWORK_NAME) {
+  customNodeOptions = process.env.NEXT_JS_FORTMATIC_NETWORK_NAME
 }
 
 function newFortmatic() {
