@@ -3,6 +3,7 @@ import { DynamicFortmaticWrapper } from 'lib/components/DynamicFortmaticWrapper'
 import { TotalSupply } from 'lib/components/TotalSupply'
 import { ConnectFortmatic } from 'lib/components/ConnectFortmatic'
 import { PodAddress } from 'lib/components/PodAddress'
+import { Withdraw } from 'lib/components/Withdraw'
 
 // This page has no blocking data requirements
 // it'll be rendered as static HTML at build time
@@ -14,6 +15,7 @@ function HomePage() {
         <PodAddress />
         <TotalSupply />
         <ConnectFortmatic />
+        <Withdraw />
       </DynamicApolloWrapper>
     </DynamicFortmaticWrapper>
   )
