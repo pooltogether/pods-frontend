@@ -1,0 +1,18 @@
+/* footer {
+  position: relative;
+  top: 120px;
+} */
+
+/* @screen sm {
+  footer {
+    top: 0;
+  }
+} */
+
+footer a {
+  @apply text-purple-700 mt-0 mb-0 no-underline;
+}
+
+footer a:hover {
+  @apply text-cyan-400 underline;
+}

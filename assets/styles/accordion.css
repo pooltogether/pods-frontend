@@ -1,0 +1,107 @@
+.accordion__button[aria-expanded='false'] {
+  background-color: #331862;
+}
+
+.accordion__button[aria-expanded='true'].zebra-striped,
+.accordion__button[aria-expanded='true'],
+.accordion__button.zebra-striped:hover,
+.accordion__button:hover {
+  background-color: #3E1F6C;
+}
+
+.accordion__button.zebra-striped {
+  background-color: #361c6a;
+}
+
+@keyframes accordionSlideInDown {
+  from {
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes accordionFadeIn {
+  0% {
+    opacity: 0;
+  }
+  26% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.accordion__panel {
+  animation-name: accordionSlideInDown, accordionFadeIn;
+}
+
+.accordion__button:hover .accordion__arrow {
+  opacity: 1;
+}
+
+.accordion__button[aria-expanded='true'] .accordion__arrow {
+  transform: rotate(90deg);
+}
+
+.accordion__arrow {
+  left: 8px;
+  top: 33%;
+}
+
+@screen sm {
+  .accordion__arrow {
+    left: 28px;
+    top: 33%;
+  }
+}
+
+@screen lg {
+  .accordion__arrow {
+    left: 28px;
+    top: 33%;
+  }
+}
+
+.accordion__first-column img {
+  max-height: 29px;
+  max-width: 29px;
+}
+
+@screen sm {
+  .accordion__first-column img {
+    max-height: 34px;
+    max-width: 34px;
+  }
+}
+
+@screen lg {
+  .accordion__first-column img {
+    max-height: 46px;
+    max-width: 46px;
+  }
+}
+
+
+.accordion__alert-triangle {
+  left: 28px;
+  top: 18px;
+}
+
+@screen sm {
+  .accordion__alert-triangle {
+    left: 18px;
+    top: 20px;
+  }
+}
+
+@screen lg {
+  .accordion__alert-triangle {
+    left: 18px;
+    top: 24px;
+  }
+}

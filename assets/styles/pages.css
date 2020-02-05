@@ -1,0 +1,19 @@
+.cube__face--front {
+  background-color: #3c1066;
+}
+
+.cube__face--right {
+  background-color: #3c1066;
+}
+
+.cube__face--back {
+  background-color: rgba(128, 90, 213, 1);
+}
+
+.cube__face--left {
+  @apply bg-lightPurple-900;
+}
+
+.cube__face--bottom {
+  background-color: rgba(128, 90, 213, 1); 
+}

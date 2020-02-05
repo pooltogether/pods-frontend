@@ -10,14 +10,21 @@ const QUERY = gql`
 export function TotalSupply() {
   const { loading, data, error } = useQuery(QUERY)
 
-  let result = ''
+  let result = null
+  
   if (loading) {
-    result = <div>Loading...</div>
+    // result = <div>Loading...</div>
   } else if (error) {
     console.error(error)
-    result = <div>Query Error: {error.message}</div>
+    result = <>
+      <strong>Total supply query error:</strong>
+      <br />{error.message}
+    </>
   } else {
-    result = <div>Total Supply: {data.totalSupply.toString()}</div>
+    result = <>
+      <strong>Total Supply:</strong>
+      <br />{data.totalSupply.toString()}
+    </>
   }
 
   return result

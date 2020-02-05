@@ -9,15 +9,23 @@ const QUERY = gql`
 
 export function PodAddress(){ 
   const { loading, data, error } = useQuery(QUERY)
+  
+  let jsx = null
 
   if (loading) {
-    return <div>Loading...</div>
+    // return <div>Loading...</div>
   } else if (error) {
     console.error(error)
-    return <div>PodAddress Error: {error.message}</div>
+    jsx = <>
+      <strong>PodAddress Error:</strong>
+      <br />{error.message}
+    </>
   } else {
-    return (
-      <div>Pod contract at {data.pod.address}</div>
-    )
+    jsx = <>
+      <strong>Pod contract at:</strong>
+      <br />{data.pod.address}
+    </>
   }
+
+  return jsx
 }

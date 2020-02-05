@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
-import { ApolloProvider } from '@apollo/react-hooks';
-import { useAsync } from "react-async"
+import React, { useContext } from 'react'
+import { useAsync } from 'react-async'
+import { ApolloProvider } from '@apollo/react-hooks'
+
 import { newApolloClient } from 'lib/apollo/newApolloClient'
 import { FortmaticContext } from 'lib/context/FortmaticContext'
 

@@ -1,7 +1,7 @@
 import React from 'react'
-import { useMutation, useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag'
+import { useMutation, useQuery } from '@apollo/react-hooks'
 import { transactionsQuery } from '@pooltogether/tightbeam/queries'
-import gql from 'graphql-tag';
 
 const WITHDRAW = gql`
   mutation {
@@ -10,7 +10,14 @@ const WITHDRAW = gql`
 `
 
 export function Withdraw() {
-  const [withdraw, withdrawMutation] = useMutation(WITHDRAW, { refetchQueries: ['transactionsQuery'] })
+  const [
+    withdraw,
+    withdrawMutation
+  ] = useMutation(
+    WITHDRAW,
+    { refetchQueries: ['transactionsQuery'] }
+  )
+
   let withdrawTxId = withdrawMutation.data ? withdrawMutation.data.sendTransaction.id : null
   
   let tx = useQuery(transactionsQuery, { variables: { id: withdrawTxId } })
@@ -19,20 +26,23 @@ export function Withdraw() {
     console.log({ id, completed, sent, error })
   }
 
-  let result
+  let jsx
   let loading, error
   if (loading) {
-    result = <div>Loading Withdraw....</div>
+    // jsx = <div>Loading Withdraw....</div>
   } else if (error) {
     console.error(error)
-    result = <div>Withdraw error: {error.toString()}</div>
+    jsx = <div>Withdraw error: {error.toString()}</div>
   } else {
-    result = (
-      <button onClick={withdraw}>Withdraw</button>
-    )
+    jsx = <button
+      onClick={withdraw}
+      className='font-bold text-white bg-denverPink-400 rounded-full pb-2 pt-3 px-6 text-lg sm:text-xl lg:text-2xl'
+    >
+      Withdraw
+    </button>
   }
 
-  return (
-    result
-  )
+  return <>
+    {jsx}
+  </>
 }
