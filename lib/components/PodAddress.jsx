@@ -2,6 +2,7 @@ import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
 
 import { Item } from 'lib/components/Item'
+import { shortenAddress } from 'lib/utils/shortenAddress'
 
 const QUERY = gql`
   {
@@ -9,7 +10,7 @@ const QUERY = gql`
   }
 `
 
-export function PodAddress(){ 
+export function PodAddress() { 
   const { loading, data, error } = useQuery(QUERY)
   
   let jsx = null
@@ -19,9 +20,10 @@ export function PodAddress(){
   } else if (error) {
     console.error(error)
   } else {
+    const podAddress = shortenAddress(data.pod.address)
     jsx = <Item
       label='Pod contract address'
-      value={data.pod.address}
+      value={podAddress}
     />
   }
 
