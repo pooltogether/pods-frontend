@@ -9,7 +9,7 @@ const WITHDRAW = gql`
   }
 `
 
-export function Withdraw() {
+export function Withdraw({ poolTokenUserBalance }) {
   const [
     withdraw,
     withdrawMutation
@@ -17,6 +17,11 @@ export function Withdraw() {
     WITHDRAW,
     { refetchQueries: ['transactionsQuery'] }
   )
+
+  console.log({ poolTokenUserBalance })
+  if (poolTokenUserBalance.lte(0)) {
+    return null
+  }
 
   let withdrawTxId = withdrawMutation.data ? withdrawMutation.data.sendTransaction.id : null
   
@@ -36,7 +41,7 @@ export function Withdraw() {
   } else {
     jsx = <button
       onClick={withdraw}
-      className='font-bold text-white bg-denverPink-400 rounded-full pb-2 pt-3 px-6 text-lg sm:text-xl lg:text-2xl'
+      className='font-bold hover:bg-purple-1100 hover:text-white trans trans-fast hover:border-white text-denverPink-400 border-4 border-denverPink-400 rounded-full pb-2 pt-2 px-6 text-lg sm:text-xl lg:text-2xl'
     >
       Withdraw
     </button>

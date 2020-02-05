@@ -2,7 +2,7 @@ import React from 'react'
 
 export function Item({ label, value }) { 
   return <div
-    className={'mb-2 sm:mr-6 w-full sm:w-1/2'}
+    className='my-3 w-full sm:w-1/3'
   >
     <span
       className='text-lightPurple-500 font-headline'

@@ -18,7 +18,6 @@ export function ContractAddressQuery({ children, contractName }) {
     console.error(error)
     return null
   } else {
-    console.log({ data })
     return children({
       contractAddress: data.contract.address
     })
