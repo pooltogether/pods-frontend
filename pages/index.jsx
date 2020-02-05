@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Slide, ToastContainer } from 'react-toastify'
 
 import { ConnectFortmatic } from 'lib/components/ConnectFortmatic'
-import { DisconnectFortmatic } from 'lib/components/DisconnectFortmatic'
 import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
 import { DynamicFortmaticWrapper } from 'lib/components/DynamicFortmaticWrapper'
 import { Meta } from 'lib/components/Meta'
@@ -60,10 +59,6 @@ function HomePage() {
             <br />
 
             <ConnectFortmatic
-              setUserAddress={setUserAddress}
-              userAddress={userAddress}
-            />
-            <DisconnectFortmatic
               setUserAddress={setUserAddress}
               userAddress={userAddress}
             />

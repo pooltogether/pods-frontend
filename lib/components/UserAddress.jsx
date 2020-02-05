@@ -1,11 +1,13 @@
 import React from 'react'
 
+import { Item } from 'lib/components/Item'
+
 export function UserAddress({ userAddress }) { 
   if (userAddress) {
-    return <>
-      <strong>UserAddress:</strong>
-      <br />{userAddress}
-    </>
+    return <Item
+      label='Address'
+      value={userAddress}
+    />
   } else {
     return null
   }

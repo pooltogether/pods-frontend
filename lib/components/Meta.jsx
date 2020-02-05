@@ -4,7 +4,7 @@ export const Meta = ({ title }) => {
   const defaultTitle = 'PoolTogether'
   title = title ? `${title} - ${defaultTitle}` : defaultTitle
 
-  const url = `https://ethdenver2020.pooltogether.com`
+  const url = `https://ethdenver.pooltogether.com`
   const description = `The ETH Denver 2020 PoolTogether Pod!`
   const keywords = 'ethereum eth ethdenver denver 2020'
   const twitterHandle = '@PoolTogether_'

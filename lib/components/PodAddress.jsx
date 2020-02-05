@@ -1,11 +1,13 @@
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag'
+import { useQuery } from '@apollo/react-hooks'
+
+import { Item } from 'lib/components/Item'
 
 const QUERY = gql`
   {
     pod: contract(name: "Pod") @client
   }
-`;
+`
 
 export function PodAddress(){ 
   const { loading, data, error } = useQuery(QUERY)
@@ -16,15 +18,11 @@ export function PodAddress(){
     // return <div>Loading...</div>
   } else if (error) {
     console.error(error)
-    jsx = <>
-      <strong>PodAddress Error:</strong>
-      <br />{error.message}
-    </>
   } else {
-    jsx = <>
-      <strong>Pod contract at:</strong>
-      <br />{data.pod.address}
-    </>
+    jsx = <Item
+      label='Pod contract address'
+      value={data.pod.address}
+    />
   }
 
   return jsx

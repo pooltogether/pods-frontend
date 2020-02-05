@@ -11,12 +11,26 @@ export function ConnectFortmatic({ setUserAddress, userAddress }) {
     setUserAddress(fortmatic.getProvider().account)
   }
 
-  return <>
-    <button
-      onClick={showLogin}
-      disabled={userAddress}
+  const logout = async (e) => {
+    e.preventDefault()
+
+    fortmatic.user.logout()
+    setUserAddress(undefined)
+  }
+
+  let jsx = <button
+    onClick={showLogin}
+  >
+    Sign in
+  </button>
+
+  if (userAddress) {
+    jsx = <button
+      onClick={logout}
     >
-      Sign in
+      Sign out
     </button>
-  </>
+  }
+
+  return jsx
 }
