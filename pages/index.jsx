@@ -4,6 +4,8 @@ import { Slide, ToastContainer } from 'react-toastify'
 import {
   SECTION_CLASSES
 } from 'lib/constants'
+import { ActionsClaim } from 'lib/components/ActionsClaim'
+import { ActionsWithdraw } from 'lib/components/ActionsWithdraw'
 import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
 import { DynamicFortmaticWrapper } from 'lib/components/DynamicFortmaticWrapper'
 import { ExplanationBanner } from 'lib/components/ExplanationBanner'
@@ -11,7 +13,6 @@ import { Meta } from 'lib/components/Meta'
 import { Nav } from 'lib/components/Nav'
 import { PodAddress } from 'lib/components/PodAddress'
 import { TotalSupply } from 'lib/components/TotalSupply'
-import { ActionsWithdraw } from 'lib/components/ActionsWithdraw'
 
 import { CSSFiles } from 'lib/components/CSSFiles'
 
@@ -52,9 +53,10 @@ function HomePage() {
           <div className='pool-container'>
             <div className='text-white text-center trans text-sm sm:text-lg mx-8 lg:mx-12 mt-0 mb-1'>
               <ExplanationBanner />
-              Claim your free ticket!
-              <br />
-              <br />
+
+              <ActionsClaim
+                userAddress={userAddress}
+              />
               <ActionsWithdraw
                 userAddress={userAddress}
               />

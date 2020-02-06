@@ -15,14 +15,19 @@ export function PodAddress() {
   
   let jsx = null
 
+  const label = 'Pod contract address'
+
   if (loading) {
-    // return <div>Loading...</div>
+    return <Item
+      label={label}
+      value='Loading...'
+    />
   } else if (error) {
     console.error(error)
   } else {
     const podAddress = shortenAddress(data.pod.address)
     jsx = <Item
-      label='Pod contract address'
+      label={label}
       value={podAddress}
     />
   }

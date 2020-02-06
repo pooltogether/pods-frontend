@@ -14,8 +14,14 @@ export function TotalSupply() {
   const { loading, data, error } = useQuery(QUERY)
 
   let result = null
+
+  const label = 'Tickets in Pod'
   
   if (loading) {
+    result = <Item
+      label={label}
+      value='Loading...'
+    />
     // result = <div>Loading...</div>
   } else if (error) {
     console.error(error)
@@ -25,7 +31,7 @@ export function TotalSupply() {
     </>
   } else {
     result = <Item
-      label='plDai in Pod'
+      label={label}
       value={displayAmountInEther(
         data.totalSupply, {
           precision: 0
