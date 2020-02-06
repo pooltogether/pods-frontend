@@ -12,6 +12,10 @@ const WITHDRAW = gql`
 `
 
 export function Withdraw({ podUserBalance }) {
+  if (podUserBalance.lte(0)) {
+    return null
+  }
+
   const [
     withdraw,
     withdrawMutation
@@ -19,10 +23,6 @@ export function Withdraw({ podUserBalance }) {
     WITHDRAW,
     { refetchQueries: ['transactionsQuery'] }
   )
-
-  if (podUserBalance.lte(0)) {
-    return null
-  }
 
   let withdrawTxId = withdrawMutation.data ? withdrawMutation.data.sendTransaction.id : null
   
