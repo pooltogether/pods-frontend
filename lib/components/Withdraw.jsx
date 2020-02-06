@@ -11,7 +11,7 @@ const WITHDRAW = gql`
   }
 `
 
-export function Withdraw({ poolTokenUserBalance }) {
+export function Withdraw({ podUserBalance }) {
   const [
     withdraw,
     withdrawMutation
@@ -20,8 +20,7 @@ export function Withdraw({ poolTokenUserBalance }) {
     { refetchQueries: ['transactionsQuery'] }
   )
 
-  console.log({ poolTokenUserBalance })
-  if (poolTokenUserBalance.lte(0)) {
+  if (podUserBalance.lte(0)) {
     return null
   }
 
@@ -45,7 +44,7 @@ export function Withdraw({ poolTokenUserBalance }) {
       onClick={withdraw}
       className={PINK_BUTTON_CLASSES}
     >
-      Withdraw
+      Withdraw from Pod
     </button>
   }
 

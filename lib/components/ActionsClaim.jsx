@@ -1,9 +1,9 @@
 import { PINK_BUTTON_CLASSES } from 'lib/constants'
 
 export const ActionsClaim = ({ userAddress }) => { 
-
+  return null
   return <button
-    onClick={'#'}
+    onClick={() => {}}
     className={PINK_BUTTON_CLASSES}
   >
     Claim your free ticket

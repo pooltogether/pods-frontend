@@ -6,6 +6,8 @@ import { FortmaticContext } from 'lib/context/FortmaticContext'
 import { displayAmountInEther } from 'lib/utils/displayAmountInEther'
 
 export function DaiPoolEstimatedWinnings({}) { 
+  return null
+  
   const fortmatic = useContext(FortmaticContext)
   const chainId = fortmatic.getProvider().network
 

@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/react-hooks'
 
 import { Item } from 'lib/components/Item'
 import { shortenAddress } from 'lib/utils/shortenAddress'
+import { EtherscanAddressLink } from 'lib/components/EtherscanAddressLink'
 
 const QUERY = gql`
   {
@@ -25,10 +26,17 @@ export function PodAddress() {
   } else if (error) {
     console.error(error)
   } else {
-    const podAddress = shortenAddress(data.pod.address)
+    const podAddress = data.pod.address
+    // const podAddress = shortenAddress(data.pod.address)
+    const etherscanLinkPodAddress = <EtherscanAddressLink
+      address={podAddress}
+    >
+      {podAddress}
+    </EtherscanAddressLink>
+
     jsx = <Item
       label={label}
-      value={podAddress}
+      value={etherscanLinkPodAddress}
     />
   }
 

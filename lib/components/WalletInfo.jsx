@@ -9,6 +9,7 @@ import { FortmaticContext } from 'lib/context/FortmaticContext'
 import { networkColorClassname } from 'lib/utils/networkColorClassname'
 import { networkIdToName } from 'lib/utils/networkIdToName'
 import { shortenAddress } from 'lib/utils/shortenAddress'
+import { EtherscanAddressLink } from './EtherscanAddressLink'
 
 export const WalletInfo = ({ userAddress, setUserAddress }) => { 
   let jsx = null
@@ -44,24 +45,20 @@ export const WalletInfo = ({ userAddress, setUserAddress }) => {
       >
         <div>
           <span className='block leading-none text-purple-500 trans'>
-            <a
-              className='text-purple-500 hover:text-purple-300 overflow-ellipsis inline-block w-11/12 no-underline'
-              href='#' // could point to etherscan
+            <EtherscanAddressLink
+              address={userAddress}
             >
-              {shortenedUserAddress}
-            </a>
+              <span
+                className='text-purple-500 hover:text-purple-300 overflow-ellipsis inline-block w-11/12 no-underline'
+              >
+                {shortenedUserAddress}
+              </span>
+            </EtherscanAddressLink>
 
             {walletAndNetworkName}
-          </span> <ContractAddressQuery
-            contractName='PoolDaiToken'
-          >
-            {({ contractAddress }) => {
-              return <NavUserBalance
-                poolTokenAddress={contractAddress}
-                userAddress={userAddress}
-              />
-            }}
-          </ContractAddressQuery>
+          </span> <NavUserBalance
+            userAddress={userAddress}
+          />
         </div>
 
         <DisconnectFortmatic

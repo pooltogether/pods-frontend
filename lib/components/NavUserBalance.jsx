@@ -1,40 +1,52 @@
-import { useQuery } from '@apollo/react-hooks'
+import { ContractAddressQuery } from 'lib/components/ContractAddressQuery'
+import { PodUserQuery } from 'lib/components/PodUserQuery'
+import { PoolTokenUserQuery } from 'lib/components/PoolTokenUserQuery'
+import { displayAmountInEther } from 'lib/utils/displayAmountInEther'
 
-import { poolTokenUserQuery } from 'lib/queries/poolTokenUserQuery'
-
-export function NavUserBalance({ poolTokenAddress, userAddress }) { 
+export function NavUserBalance({ userAddress }) { 
   let jsx = null
 
-  const { loading, data, error } = useQuery(poolTokenUserQuery, {
-    variables: { 
-      poolTokenAddress,
-      userAddress
-    }
-  })
-  
-  if (loading) {
-    jsx = 'Loading balance ...'
-  } else if (error) {
-    console.error(error)
-    jsx = 'Error retrieving balance ...'
-  } else {
-    const tokenBalance = data.balanceOf.toString()
-    
-    jsx = <>
-      <span className='sm:hidden'>
-        {tokenBalance} plDai
-      </span>
-      <span className='hidden sm:block'>
-        You have {tokenBalance} plDai
-      </span>
-    </>
-  }
+  return <ContractAddressQuery
+    contractName='Pod'
+  >
+    {({ contractAddress }) => {
+      const podAddress = contractAddress
 
-  return <>
-    <span
-      className='flex justify-end text-cyan-400 hover:text-cyan-200 trans'
-    >
-      {jsx}      
-    </span>
-  </>
+      return <ContractAddressQuery
+        contractName='PoolDaiToken'
+      >
+        {({ contractAddress }) => {
+          const poolDaiTokenAddress = contractAddress
+
+          return <PodUserQuery
+            podAddress={podAddress}
+            userAddress={userAddress}
+          >
+            {(podUserQuery) => {
+              const podBalance = displayAmountInEther(podUserQuery.balanceOf, { precision: 0 })
+
+              return <PoolTokenUserQuery
+                poolTokenAddress={poolDaiTokenAddress}
+                userAddress={userAddress}
+              >
+                {(poolTokenUserQuery) => {
+                  const tokenBalance = displayAmountInEther(poolTokenUserQuery.balanceOf, { precision: 0 })
+
+                  return <span
+                    className='flex justify-end text-cyan-400 hover:text-cyan-200 trans'
+                  >
+                    {tokenBalance} PT <span
+                      className='text-purple-600'
+                    >&nbsp;&bull;&nbsp;</span> <span
+                      className='text-blue-400'
+                    >{podBalance} Pod Tickets</span>
+                  </span>
+                }}
+              </PoolTokenUserQuery>
+            }}
+          </PodUserQuery>
+        }}
+      </ContractAddressQuery>
+    }}
+  </ContractAddressQuery>
 }

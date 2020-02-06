@@ -5,6 +5,7 @@ import {
   SECTION_CLASSES
 } from 'lib/constants'
 import { ActionsClaim } from 'lib/components/ActionsClaim'
+import { ActionsTransfer } from 'lib/components/ActionsTransfer'
 import { ActionsWithdraw } from 'lib/components/ActionsWithdraw'
 import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
 import { DynamicFortmaticWrapper } from 'lib/components/DynamicFortmaticWrapper'
@@ -43,6 +44,7 @@ function HomePage() {
       transition={Slide}
     />
     
+    <br/>
     <DynamicFortmaticWrapper>
       <DynamicApolloWrapper>
         <div className='flex flex-col text-white' style={{ minHeight: '100vh' }}>
@@ -79,6 +81,9 @@ function HomePage() {
               <ExplanationBanner />
 
               <ActionsClaim
+                userAddress={userAddress}
+              />
+              <ActionsTransfer
                 userAddress={userAddress}
               />
               <ActionsWithdraw

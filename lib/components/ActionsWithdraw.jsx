@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ContractAddressQuery } from 'lib/components/ContractAddressQuery'
-import { PoolTokenUserBalance } from 'lib/components/PoolTokenUserBalance'
+import { PodUserQuery } from 'lib/components/PodUserQuery'
 import { Withdraw } from 'lib/components/Withdraw'
 
 export const ActionsWithdraw = ({ userAddress }) => { 
@@ -9,20 +9,21 @@ export const ActionsWithdraw = ({ userAddress }) => {
     
   if (userAddress) {
     jsx = <ContractAddressQuery
-      contractName='PoolDaiToken'
+      contractName='Pod'
     >
       {({ contractAddress }) => {
-        console.log(contractAddress)
-        return <PoolTokenUserBalance
-          poolTokenAddress={contractAddress}
+        return <PodUserQuery
+          podAddress={contractAddress}
           userAddress={userAddress}
         >
-          {({ poolTokenUserBalance }) => {
+          {(podUserQuery) => {
+            const podUserBalance = podUserQuery.balanceOf
+
             return <Withdraw
-              poolTokenUserBalance={poolTokenUserBalance}
+              podUserBalance={podUserBalance}
             />
           }}
-        </PoolTokenUserBalance>
+        </PodUserQuery>
       }}
     </ContractAddressQuery>
   }

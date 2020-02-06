@@ -50,7 +50,7 @@ export function ExplanationBanner() {
           <li
             className='text-sm sm:text-base lg:text-lg text-purple-400 ml-4 mt-1'
           >
-            &bull; a chance to win a share of the main PoolTogether weekly prize - currently <span
+            &bull; a chance to win a share of the main PoolTogether weekly prize - currently $X.XX <span
               className='text-green-400'
             >
               <DaiPoolEstimatedWinnings />
