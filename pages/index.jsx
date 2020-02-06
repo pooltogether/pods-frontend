@@ -16,6 +16,11 @@ import { TotalSupply } from 'lib/components/TotalSupply'
 
 import { CSSFiles } from 'lib/components/CSSFiles'
 
+import PartyBufficorn from 'assets/images/party-bufficorn.svg'
+import SpaceBufficorn from 'assets/images/space-bufficorn.svg'
+import Dolphin from 'assets/images/dolphin.svg'
+import Trophy from 'assets/images/trophy.svg'
+
 // This page has no blocking data requirements
 // it'll be rendered as static HTML at build time
 function HomePage() {
@@ -52,6 +57,25 @@ function HomePage() {
 
           <div className='pool-container'>
             <div className='text-white text-center trans text-sm sm:text-lg mx-8 lg:mx-12 mt-0 mb-1'>
+
+              <div className='flex w-9/12 sm:w-1/3 lg:w-1/5 mx-auto'>
+                <img
+                  alt={`Space Bufficorn`}
+                  src={SpaceBufficorn}
+                  className='mx-auto w-16'
+                />
+                <img
+                  alt={`PoolTogether Eth Trophy`}
+                  src={Trophy}
+                  className='mx-auto w-8'
+                />
+                <img
+                  alt={`PoolTogether Dolphin`}
+                  src={Dolphin}
+                  className='mx-auto w-12'
+                />
+              </div>
+
               <ExplanationBanner />
 
               <ActionsClaim
@@ -66,6 +90,12 @@ function HomePage() {
               <br />
               <br />
               <br />
+              <img
+                alt={`Bufficorn Partyin'`}
+                src={PartyBufficorn}
+                className='mx-auto w-16'
+              />
+              
               <div
                 className={SECTION_CLASSES}
               >

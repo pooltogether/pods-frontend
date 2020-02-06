@@ -20,6 +20,7 @@
     "@zeit/next-css": "^1.0.1",
     "apollo-boost": "^0.4.7",
     "apollo-cache-inmemory": "^1.6.5",
+    "date-fns": "^2.9.0",
     "ethers": "^4.0.43",
     "feather-icons-react": "^0.4.1",
     "fortmatic": "^1.1.3",
