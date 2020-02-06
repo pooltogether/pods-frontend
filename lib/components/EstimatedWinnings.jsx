@@ -12,6 +12,9 @@ import { normalizeTo18Decimals } from 'lib/utils/normalizeTo18Decimals'
 
 const bigNumberify = ethers.utils.bigNumberify
 
+// TODO: Get this working ... Probably the ERC20Query, <EventSubscription /> components 
+// not working in this app
+
 export const EstimatedWinnings =
   ({
     children,
@@ -35,7 +38,9 @@ export const EstimatedWinnings =
       {({ erc20Query }) => {
         if (erc20Query && erc20Query.decimals) {
           decimals = erc20Query.decimals
+          console.log({ decimals })
         }
+        console.log({decimals})
 
         return <PoolQuery poolAddress={poolAddress}>
           {(data) => {

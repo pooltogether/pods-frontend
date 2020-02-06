@@ -13,7 +13,7 @@ export function ContractAddressQuery({ children, contractName }) {
   })
   
   if (loading) {
-    return <>Loading contract ...</>
+    return '--'
   } else if (error) {
     console.error(error)
     return null

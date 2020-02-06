@@ -5,6 +5,10 @@ import { FortmaticContext } from 'lib/context/FortmaticContext'
 
 let customNodeOptions
 
+const fortmaticApiKeyTest = process.env.NEXT_JS_FORTMATIC_API_KEY
+const fortmaticApiKeyProd = process.env.NEXT_JS_FORTMATIC_PRODUCTION_API_KEY
+const fortmaticApiKey = fortmaticApiKeyProd ? fortmaticApiKeyProd : fortmaticApiKeyTest
+
 if (
   process.env.NEXT_JS_FORTMATIC_CUSTOM_NODE_URL &&
   process.env.NEXT_JS_FORTMATIC_CUSTOM_NODE_CHAIN_ID
@@ -21,9 +25,9 @@ function newFortmatic() {
   let fm
 
   if (customNodeOptions) {
-    fm = new Fortmatic(process.env.NEXT_JS_FORTMATIC_API_KEY, customNodeOptions)
+    fm = new Fortmatic(fortmaticApiKey, customNodeOptions)
   } else {
-    fm = new Fortmatic(process.env.NEXT_JS_FORTMATIC_API_KEY)
+    fm = new Fortmatic(fortmaticApiKey)
   }
 
   return fm

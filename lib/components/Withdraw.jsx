@@ -3,6 +3,8 @@ import gql from 'graphql-tag'
 import { useMutation, useQuery } from '@apollo/react-hooks'
 import { transactionsQuery } from '@pooltogether/tightbeam/queries'
 
+import { PINK_BUTTON_CLASSES } from 'lib/constants'
+
 const WITHDRAW = gql`
   mutation {
     sendTransaction(name: "Pod", fn: "redeem" params: [0, "0x"], gasLimit: 500000) @client
@@ -41,7 +43,7 @@ export function Withdraw({ poolTokenUserBalance }) {
   } else {
     jsx = <button
       onClick={withdraw}
-      className='font-bold hover:bg-purple-1100 hover:text-white trans trans-fast hover:border-white text-denverPink-400 border-4 border-denverPink-400 rounded-full pb-2 pt-2 px-6 text-lg sm:text-xl lg:text-2xl'
+      className={PINK_BUTTON_CLASSES}
     >
       Withdraw
     </button>

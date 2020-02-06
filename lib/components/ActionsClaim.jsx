@@ -1,11 +1,18 @@
-export const ActionsClaim = ({ userAddress }) => { 
-  let jsx = null
+import { PINK_BUTTON_CLASSES } from 'lib/constants'
 
-  jsx = 'Claim your free ticket!'
+export const ActionsClaim = ({ userAddress }) => { 
+
+  return <button
+    onClick={'#'}
+    className={PINK_BUTTON_CLASSES}
+  >
+    Claim your free ticket
+  </button>
 
   if (userAddress) {
+    let jsx = null
     // TODO: run some sort of query if we have a userAddress to figure out
-    // if they have a free ticker they can claim or if they've already done that
+    // if they have a free ticket they can claim or if they've already done that
 
     // jsx = <ContractAddressQuery
     //   contractName='PoolDaiToken'
@@ -17,7 +24,7 @@ export const ActionsClaim = ({ userAddress }) => {
     //       userAddress={userAddress}
     //     >
     //       {({ poolTokenUserBalance }) => {
-    //         return <Withdraw
+    //         return <Claim
     //           poolTokenUserBalance={poolTokenUserBalance}
     //         />
     //       }}
