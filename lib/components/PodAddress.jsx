@@ -27,11 +27,11 @@ export function PodAddress() {
     console.error(error)
   } else {
     const podAddress = data.pod.address
-    // const podAddress = shortenAddress(data.pod.address)
+    const shortenedPodAddress = shortenAddress(data.pod.address)
     const etherscanLinkPodAddress = <EtherscanAddressLink
       address={podAddress}
     >
-      {podAddress}
+      {shortenedPodAddress}
     </EtherscanAddressLink>
 
     jsx = <Item

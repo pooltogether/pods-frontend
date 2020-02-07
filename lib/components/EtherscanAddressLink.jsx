@@ -19,7 +19,7 @@ export const EtherscanAddressLink = ({ address, children, className }) => {
     >
       {children}<FeatherIcon
         icon='arrow-up-right'
-        className='is-etherscan-arrow inline-block'
+        className='is-etherscan-arrow inline-block trans no-underline text-purple-400 hover:text-green-300'
       />
     </a>
   </>

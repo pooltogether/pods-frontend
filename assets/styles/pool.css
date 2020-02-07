@@ -28,7 +28,7 @@ html {
 
 body {
   @apply font-sans-regular;
-  background-color: #160630;
+  background-color: #160730;
   background-image: url(/pool-together--app-background.png);
   overflow-x: hidden;
 }
@@ -155,7 +155,7 @@ input[type='submit'][disabled] {
 .is-etherscan-arrow {
   height: 1em;
   position: relative;
-  top: -2px;
+  top: -1px;
   width: 1em;
 }
 
@@ -553,4 +553,37 @@ input[type="text"] {
   100% {
     box-shadow: 0 1px 25px rgba(228, 195, 220, 0.5);
   }
+}
+
+.neuo-purple {
+  /* border-radius: 50px; */
+  /* background: #160730; */
+  background: linear-gradient(145deg, rgba(26, 9, 56, 0.4), rgba(17, 5, 39, 0.4));
+  box-shadow:   24px  24px 48px rgba(9, 3, 19, 0.8), 
+              -24px -24px 48px rgba(35, 11, 77, 0.7);
+}
+
+.neuo-pink {
+  background: linear-gradient(145deg, #fa659a, #d35582);
+  box-shadow:   6px  6px 12px rgba(9, 3, 19, 0.8), 
+              -6px -6px 12px rgba(35, 11, 77, 0.7);
+}
+
+.neuo-pink:hover {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab );
+	background-size: 400% 400%;
+  animation: gradientBG 2s ease infinite;
+}
+
+
+@keyframes gradientBG {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }

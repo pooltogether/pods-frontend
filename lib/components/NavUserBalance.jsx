@@ -3,8 +3,12 @@ import { PodUserQuery } from 'lib/components/PodUserQuery'
 import { PoolTokenUserQuery } from 'lib/components/PoolTokenUserQuery'
 import { displayAmountInEther } from 'lib/utils/displayAmountInEther'
 
+import plDaiSymbol from 'assets/images/plDai-xs-outlines.svg'
+
 export function NavUserBalance({ userAddress }) { 
-  let jsx = null
+  if (!userAddress) {
+    return null
+  }
 
   return <ContractAddressQuery
     contractName='Pod'
@@ -33,13 +37,24 @@ export function NavUserBalance({ userAddress }) {
                   const tokenBalance = displayAmountInEther(poolTokenUserQuery.balanceOf, { precision: 0 })
 
                   return <span
-                    className='flex justify-end text-cyan-400 hover:text-cyan-200 trans'
+                    className='flex flex-col items-center justify-center text-cyan-400 hover:text-cyan-200 trans'
                   >
-                    {tokenBalance} PT <span
-                      className='text-purple-600'
-                    >&nbsp;&bull;&nbsp;</span> <span
-                      className='text-blue-400'
-                    >{podBalance} Pod Tickets</span>
+                    <div className='text-purple-700 font-headline bg-purple-1200 px-2 py-1 rounded-full'>
+                      Your Inventory:
+                    </div>
+                    
+                    <div>
+                      {tokenBalance} <img
+                        src={plDaiSymbol}
+                        className='w-6 inline-block'
+                      />
+                    </div>
+
+                    <div>
+                      <span
+                        className='text-blue-400'
+                      >{podBalance} Pods</span>
+                    </div>
                   </span>
                 }}
               </PoolTokenUserQuery>

@@ -60,7 +60,7 @@ function HomePage() {
           <div className='pool-container'>
             <div className='text-white text-center trans text-sm sm:text-lg mx-8 lg:mx-12 mt-0 mb-1'>
 
-              <div className='flex w-9/12 sm:w-1/3 lg:w-1/5 mx-auto'>
+              <div className='flex w-9/12 sm:w-1/3 lg:w-1/5 mx-auto mt-8 sm:mt-0'>
                 <img
                   alt={`Space Bufficorn`}
                   src={SpaceBufficorn}

@@ -9,7 +9,7 @@ import { DaiPoolEstimatedWinnings } from 'lib/components/DaiPoolEstimatedWinning
 
 export function ExplanationBanner() { 
   return <div
-    className='text-left bg-denverPurple-700 lg:w-3/4 my-6 mx-auto px-10 pt-2 pb-4 rounded-2xl'
+    className='text-left bg-denverPurple-700 lg:w-3/4 my-6 mx-auto px-10 pt-2 pb-4 rounded-2xl neuo-purple'
   >
     <div
       className={SECTION_CLASSES}

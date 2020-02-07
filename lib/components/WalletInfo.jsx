@@ -3,7 +3,6 @@ import classnames from 'classnames'
 
 import { ConnectFortmatic } from 'lib/components/ConnectFortmatic'
 import { DisconnectFortmatic } from 'lib/components/DisconnectFortmatic'
-import { ContractAddressQuery } from 'lib/components/ContractAddressQuery'
 import { NavUserBalance } from 'lib/components/NavUserBalance'
 import { FortmaticContext } from 'lib/context/FortmaticContext'
 import { networkColorClassname } from 'lib/utils/networkColorClassname'
@@ -24,8 +23,7 @@ export const WalletInfo = ({ userAddress, setUserAddress }) => {
     if (chainId && chainId !== 1) {
       networkName = <span
         className={classnames(
-          networkColorClassname(chainId),
-          'inline-block text-xxxs sm:text-xs lg:text-sm'
+          networkColorClassname(chainId)
         )}
       >
         &nbsp;{networkIdToName(chainId)}
@@ -34,35 +32,34 @@ export const WalletInfo = ({ userAddress, setUserAddress }) => {
 
     const name = 'Fortmatic'
     const walletAndNetworkName = <span
-      className='block sm:inline-block py-1 rounded-lg sm:text-purple-500 capitalize'
+      className='capitalize'
     >
       {name}{networkName}
     </span>
 
     jsx = <>
       <div
-        className='relative flex justify-end items-center'
+        className='text-purple-500 trans flex items-center mt-2 sm:mt-0'
       >
-        <div>
-          <span className='block leading-none text-purple-500 trans'>
-            <EtherscanAddressLink
-              address={userAddress}
-            >
-              <span
-                className='text-purple-500 hover:text-purple-300 overflow-ellipsis inline-block w-11/12 no-underline'
-              >
-                {shortenedUserAddress}
-              </span>
-            </EtherscanAddressLink>
-
-            {walletAndNetworkName}
-          </span> <NavUserBalance
-            userAddress={userAddress}
-          />
-        </div>
-
-        <DisconnectFortmatic
+        <EtherscanAddressLink
+          address={userAddress}
+        >
+          <span
+            className='text-purple-500 hover:text-green-300 trans'
+          >
+            {shortenedUserAddress} <span
+              className='trans trans-fast hover:text-green-300 inline-block sm:hidden lg:inline-block'
+            >&bull;</span> {walletAndNetworkName} 
+          </span>
+        </EtherscanAddressLink> <DisconnectFortmatic
           setUserAddress={setUserAddress}
+        />
+      </div>
+      <div
+        className='relative flex justify-center sm:justify-end items-center sm:hidden mt-4'
+      >
+        <NavUserBalance
+          userAddress={userAddress}
         />
       </div>
     </>
