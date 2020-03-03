@@ -3,13 +3,17 @@ import { useAsync } from 'react-async'
 import { ApolloProvider } from '@apollo/react-hooks'
 
 import { newApolloClient } from 'lib/apollo/newApolloClient'
-import { FortmaticContext } from 'lib/context/FortmaticContext'
+import { EthersContext } from 'lib/context/EthersContext'
 
 export default function ApolloWrapper({ children }) {
   let result = null
 
-  let fortmatic = useContext(FortmaticContext)
-  const { data, error, isPending } = useAsync({ promiseFn: newApolloClient, fortmatic })
+  let provider = useContext(EthersContext)
+  let newApolloClientResult = {}
+  if (provider) {
+    newApolloClientResult = useAsync({ promiseFn: newApolloClient, provider })
+  }
+  const { data, error, isPending } = newApolloClientResult
 
   if (data) {
     result = (
@@ -24,5 +28,5 @@ export default function ApolloWrapper({ children }) {
     result = <span>Loading...</span>
   }
 
-  return result
+  return <div>{result}</div>
 }

@@ -4,7 +4,7 @@ const {
 
 module.exports = {
   corePlugins: {
-    container: false
+    container: true
   },
   theme: {
     // this gives us regular (mobile), sm (641px - 1281px) and lg (1281px+)

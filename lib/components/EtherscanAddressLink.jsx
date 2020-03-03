@@ -1,12 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import FeatherIcon from 'feather-icons-react'
 
-import { FortmaticContext } from 'lib/context/FortmaticContext'
 import { formatEtherscanAddressUrl } from 'lib/utils/formatEtherscanAddressUrl'
 
 export const EtherscanAddressLink = ({ address, children, className }) => {
-  const fortmatic = useContext(FortmaticContext)
-  const chainId = fortmatic.getProvider().network
+  chainId = 1
   const url = formatEtherscanAddressUrl(address, chainId || 1)
 
   return <>
