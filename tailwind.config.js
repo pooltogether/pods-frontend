@@ -205,6 +205,7 @@ module.exports = {
       'hover',
       'focus',
       'responsive',
+      'disabled'
     ]
   },
   plugins: []

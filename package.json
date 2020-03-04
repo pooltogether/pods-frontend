@@ -8,15 +8,15 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "next",
+    "dev": "next -p 4444",
     "build": "next build && next export",
     "start": "next start"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^9.2.1",
-    "@pooltogether/pods": "^0.1.1",
+    "@pooltogether/pods": "^0.2.1",
     "@pooltogether/pooltogether-contracts": "^0.2.7",
-    "@pooltogether/tightbeam": "^1.0.9",
+    "@pooltogether/tightbeam": "^1.0.10",
     "@zeit/next-css": "^1.0.1",
     "apollo-boost": "^0.4.7",
     "apollo-cache-inmemory": "^1.6.5",

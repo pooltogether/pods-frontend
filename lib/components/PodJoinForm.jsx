@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import { useQuery, useMutation } from '@apollo/react-hooks'
+import { ethers } from 'ethers'
 import gql from 'graphql-tag'
-import { transactionsQuery } from '@pooltogether/tightbeam/queries/transactionsQuery'
 
+import { Button } from 'lib/components/Button'
+import { tokenQuery } from 'lib/queries/tokenQuery'
+import { transactionsQuery } from 'lib/queries/transactionsQuery'
 import { podUserQuery } from 'lib/queries/podUserQuery'
 import { poolQuery } from 'lib/queries/poolQuery'
 
@@ -12,67 +15,99 @@ export default function PodJoinForm({ podAddress, userAddress }) {
     setAmount
   ] = useState('')
 
+  const [
+    lastRefetchTxId,
+    setLastRefetchTxId
+  ] = useState(0)
+
+  const weiAmount = ethers.utils.parseEther(amount || '0')
+
   let podUser = useQuery(podUserQuery, {
     variables: { podAddress, userAddress },
     skip: !userAddress || !podAddress
   })
 
+  let poolAddress = podUser.data ? podUser.data.poolAddress : null
+
   let pool = useQuery(poolQuery, {
     variables: {
       podAddress,
-      poolAddress: podUser.data ? podUser.data.poolAddress : ''
+      poolAddress
     },
-    skip: !podUser.data || !podUser.data.poolAddress
+    skip: !poolAddress
   })
 
-  // let txQuery = gql`
-  //   query transactionQuery {
-  //     _transactions @client {
-  //       id
-  //       complete
-  //       error
-  //       sent
-  //     }
-  //   }
-  // `
+  let tokenAddress = pool.data ? pool.data.tokenAddress : null
 
-  const approveTx = useQuery(transactionsQuery, {
-    // variables: {
-    //   id: approveResult.data ? approveResult.data.sendTransaction.id : ''
-    // },
-    // skip: !approveResult.data || !approveResult.data.sendTransaction
-    fetchPolicy: 'no-cache'
+  let token = useQuery(tokenQuery, {
+    variables: {
+      podAddress,
+      userAddress,
+      tokenAddress
+    },
+    skip: !tokenAddress
   })
+
+  let transactions = useQuery(transactionsQuery)
+
+  let loading = podUser.loading || pool.loading || token.loading || transactions.loading
+  let error = podUser.error || pool.error || token.error || transactions.error
 
   const [approve, approveResult] = useMutation(gql`
-      mutation approve($tokenAddress: String!, $podAddress: String!, $amount: Float!) {
-        sendTransaction(abi: "ERC20", address: $tokenAddress, fn: "approve", params: [$podAddress, $amount]) @client
-      }
+    mutation approveMutation($tokenAddress: String!, $podAddress: String!, $amount: Float!) {
+      sendTransaction(abi: "ERC20", address: $tokenAddress, fn: "approve", params: [$podAddress, $amount]) @client
+    }
   `, {
     variables: {
-      tokenAddress: pool.data ? pool.data.tokenAddress : '',
+      tokenAddress,
       podAddress,
-      amount
+      amount: weiAmount
     },
-    refetchQueries: 'transactionsQuery',
-    update: () => {
-      console.log('UPDATED')
-      approveTx.refetch()
-    }
+    refetchQueries: ['transactionsQuery']
   })
 
-  console.log({ approveResult, approveTx: approveTx.data })
+  let approveTx
+  if (!loading && !error && approveResult.data) {
+    approveTx = transactions.data._transactions.find(tx => tx.id === approveResult.data.sendTransaction.id)  
+  }
 
   const [deposit, depositResult] = useMutation(gql`
-    mutation deposit($podAddress: String!, $amount: Float!) {
-      sendTransaction(abi: "Pod", address: $podAddress, fn: "deposit", params: [$amount]) @client
+    mutation depositMutation($podAddress: String!, $amount: Float!) {
+      sendTransaction(abi: "Pod", address: $podAddress, fn: "deposit", params: [$amount, "0x0"]) @client
     }
   `, {
     variables: {
       podAddress,
-      amount
-    }
+      amount: weiAmount
+    },
+    refetchQueries: ['transactionsQuery']
   })
+
+  let depositTx
+  if (!loading && !error && depositResult.data) {
+    depositTx = transactions.data._transactions.find(tx => tx.id === depositResult.data.sendTransaction.id)
+  }
+
+  if (approveTx && approveTx.completed && approveTx.id > lastRefetchTxId) {
+    token.refetch()
+    setLastRefetchTxId(approveTx.id)
+  }
+
+  if (depositTx && depositTx.completed && depositTx.id > lastRefetchTxId) {
+    setAmount(0)
+    token.refetch()
+    podUser.refetch()
+    pool.refetch()
+    setLastRefetchTxId(depositTx.id)
+  }
+
+  let needsApproval = true
+  let sufficientBalance = false
+
+  if (!loading && !error && token.data) {
+    needsApproval = token.data.allowance.lt(ethers.utils.bigNumberify(weiAmount))
+    sufficientBalance = token.data.balance.gte(ethers.utils.bigNumberify(weiAmount))
+  }
 
   return (
     <form className="w-full max-w-sm">
@@ -96,12 +131,17 @@ export default function PodJoinForm({ podAddress, userAddress }) {
       <div className="md:flex md:items-center">
         <div className="md:w-1/3"></div>
         <div className="md:w-2/3">
-          <button
-            className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-            type="button"
-            onClick={(e) => { e.preventDefault(); approve() } }>
+          <Button
+            disabled={!needsApproval}
+            onClick={(e) => { e.preventDefault(); approve(); } }>
             Approve
-          </button>
+          </Button>
+          &nbsp;
+          <Button
+            disabled={needsApproval}
+            onClick={(e) => { e.preventDefault(); deposit(); } }>
+            Deposit
+          </Button>
         </div>
       </div>
     </form>
