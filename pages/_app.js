@@ -12,7 +12,6 @@ import React from 'react'
 import { Slide, ToastContainer } from 'react-toastify'
 
 import { ConnectMetamask } from 'lib/components/ConnectMetamask'
-import ApolloWrapper from 'lib/components/ApolloWrapper'
 import EthersWrapper from 'lib/components/EthersWrapper'
 import { Meta } from 'lib/components/Meta'
 

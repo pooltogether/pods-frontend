@@ -23,7 +23,7 @@ function Pod() {
       <div className='mb-8'>
         <Button onClick={() => router.push('/')}>Back</Button>
       </div>
-      <PodJoinForm podAddress={podAddress} />
+      <PodJoinForm podAddress={podAddress} userAddress={account} />
       <PodUserDetails podAddress={podAddress} userAddress={account} />
     </div>
   </>

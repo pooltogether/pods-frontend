@@ -11,7 +11,7 @@ export default function ApolloWrapper({ children }) {
   let provider = useContext(EthersContext)
   let newApolloClientResult = {}
   if (provider) {
-    newApolloClientResult = useAsync({ promiseFn: newApolloClient, provider })
+    // newApolloClientResult = useAsync({ promiseFn: newApolloClient, provider })
   }
   const { data, error, isPending } = newApolloClientResult
 

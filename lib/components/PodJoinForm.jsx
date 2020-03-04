@@ -1,35 +1,78 @@
 import React, { useState } from 'react'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
+import { transactionsQuery } from '@pooltogether/tightbeam/queries/transactionsQuery'
 
+import { podUserQuery } from 'lib/queries/podUserQuery'
 import { poolQuery } from 'lib/queries/poolQuery'
 
-export default function PodJoinForm({ podAddress, poolAddress }) {
+export default function PodJoinForm({ podAddress, userAddress }) {
   const [
     amount,
     setAmount
   ] = useState('')
 
-  const podQuery = useQuery(podUserQuery, {
+  let podUser = useQuery(podUserQuery, {
     variables: { podAddress, userAddress },
-    skip: !userAddress
+    skip: !userAddress || !podAddress
   })
 
-  const poolQuery = useQuery(poolQuery, {
+  let pool = useQuery(poolQuery, {
     variables: {
       podAddress,
-      poolAddress: podQuery.data ? podQuery.data.poolAddress : ''
+      poolAddress: podUser.data ? podUser.data.poolAddress : ''
     },
-    skip: !podQuery.data
+    skip: !podUser.data || !podUser.data.poolAddress
   })
 
-  // const deposit = useMutation(gql`
-  //   mutation($podAddress: String!) {
-  //     sendTransaction(abi: "Pod", address: $podAddress, fn: "deposit", params) @client
+  // let txQuery = gql`
+  //   query transactionQuery {
+  //     _transactions @client {
+  //       id
+  //       complete
+  //       error
+  //       sent
+  //     }
   //   }
-  // `)
+  // `
 
-  console.log({ podQuery, poolQuery })
+  const approveTx = useQuery(transactionsQuery, {
+    // variables: {
+    //   id: approveResult.data ? approveResult.data.sendTransaction.id : ''
+    // },
+    // skip: !approveResult.data || !approveResult.data.sendTransaction
+    fetchPolicy: 'no-cache'
+  })
+
+  const [approve, approveResult] = useMutation(gql`
+      mutation approve($tokenAddress: String!, $podAddress: String!, $amount: Float!) {
+        sendTransaction(abi: "ERC20", address: $tokenAddress, fn: "approve", params: [$podAddress, $amount]) @client
+      }
+  `, {
+    variables: {
+      tokenAddress: pool.data ? pool.data.tokenAddress : '',
+      podAddress,
+      amount
+    },
+    refetchQueries: 'transactionsQuery',
+    update: () => {
+      console.log('UPDATED')
+      approveTx.refetch()
+    }
+  })
+
+  console.log({ approveResult, approveTx: approveTx.data })
+
+  const [deposit, depositResult] = useMutation(gql`
+    mutation deposit($podAddress: String!, $amount: Float!) {
+      sendTransaction(abi: "Pod", address: $podAddress, fn: "deposit", params: [$amount]) @client
+    }
+  `, {
+    variables: {
+      podAddress,
+      amount
+    }
+  })
 
   return (
     <form className="w-full max-w-sm">
@@ -56,8 +99,8 @@ export default function PodJoinForm({ podAddress, poolAddress }) {
           <button
             className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
             type="button"
-            onClick={(e) => { e.preventDefault(); onOpen(podAddress) } }>
-            Open Pod
+            onClick={(e) => { e.preventDefault(); approve() } }>
+            Approve
           </button>
         </div>
       </div>

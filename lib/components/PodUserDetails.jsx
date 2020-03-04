@@ -25,7 +25,6 @@ export function PodUserDetails({ podAddress, userAddress }) {
         <p>Account: {userAddress}</p>
         <p>Balance: {ethers.utils.formatEther(data.balance)}</p>
         <p>Balance (underyling): {ethers.utils.formatEther(data.balanceUnderlying)}</p>
-        <p>Network: {data.network.name}</p>
       </div>
     )
   }
