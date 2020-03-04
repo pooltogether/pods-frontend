@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
 
 export default function PodForm({ onOpen }) {
   let [
@@ -8,28 +6,8 @@ export default function PodForm({ onOpen }) {
     setPodAddress
   ] = useState('')
 
-  let contractQuery = useQuery(gql`
-    query {
-      contract(name: "DaiPod") @client
-      network @client {
-        name
-        chainId
-      }
-    }
-  `)
-
-  let podMessage
-  if (contractQuery.data) {
-    const { contract, network } = contractQuery.data
-    console.log({ contract })
-    podMessage = <div className='mb-8'>
-      DaiPod on <b>{network.name}</b> is at {contract.address}
-    </div>
-  }
-
   return (
     <>
-      {podMessage}
       <form className="w-full max-w-sm">
         <div className="md:flex md:items-center mb-6">
           <div className="md:w-1/3">
