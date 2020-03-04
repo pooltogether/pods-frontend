@@ -13,13 +13,11 @@ export default function EthersWrapper({ children }) {
   let { web3Provider, apolloClient } = state
 
   if (windowExists && !apolloClient) {
-    console.log('CREATING CLIENT')
     web3Provider = new ethers.providers.Web3Provider(window.ethereum)
     apolloClient = newApolloClient({ provider: web3Provider })
     setApolloClient({ web3Provider, apolloClient })
 
     window.ethereum.on('networkChanged', () => {
-      console.log('NETWORK CHANGED')
       web3Provider = new ethers.providers.Web3Provider(window.ethereum)
       apolloClient = newApolloClient({ provider: web3Provider })
       setApolloClient({ web3Provider, apolloClient })
