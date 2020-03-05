@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 
-import { Layout } from 'lib/components/Layout'
 import { Button } from 'lib/components/Button'
 import { PodUserDetails } from 'lib/components/PodUserDetails'
 import { PodWithdrawPendingForm } from 'lib/components/PodWithdrawPendingForm'
@@ -22,7 +21,7 @@ function Pod() {
   `)
   const { account } = accountQuery.data || {}
 
-  return <Layout>
+  return (
     <div className='container mx-auto mt-12'>
       <div className='mb-8'>
         <Button onClick={() => router.push('/')}>Back</Button>
@@ -41,7 +40,7 @@ function Pod() {
       </div>
       <PodUserDetails podAddress={podAddress} userAddress={account} />
     </div>
-  </Layout>
+  )
 }
 
 export default Pod

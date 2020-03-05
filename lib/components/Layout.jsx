@@ -11,7 +11,7 @@ import 'assets/styles/transitions.css'
 import React from 'react'
 import { Slide, ToastContainer } from 'react-toastify'
 
-import { ConnectMetamask } from 'lib/components/ConnectMetamask'
+import { ConnectMetaMask } from 'lib/components/ConnectMetaMask'
 import EthersWrapper from 'lib/components/EthersWrapper'
 import { Meta } from 'lib/components/Meta'
 
@@ -31,7 +31,7 @@ export function Layout({ children }) {
     />
     
     <EthersWrapper>
-      <ConnectMetamask />
+      <ConnectMetaMask />
 
       {children}
     </EthersWrapper>

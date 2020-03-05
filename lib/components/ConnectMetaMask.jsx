@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import { Button } from 'lib/components/Button'
 
-export function ConnectMetamask() {
+export function ConnectMetaMask() {
   const { loading, data, error, refetch } = useQuery(gql`
     query podQuery($podAddress: String!) {
       account @client
