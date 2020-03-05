@@ -17,7 +17,7 @@ import { Meta } from 'lib/components/Meta'
 
 // This page has no blocking data requirements
 // it'll be rendered as static HTML at build time
-function Layout({ Component, pageProps }) {
+export function Layout({ children }) {
   return <>
     <Meta
       title='Pod Reference Implementation'
@@ -33,9 +33,7 @@ function Layout({ Component, pageProps }) {
     <EthersWrapper>
       <ConnectMetamask />
 
-      <Component {...pageProps} />
+      {children}
     </EthersWrapper>
   </>
 }
-
-export default Layout
