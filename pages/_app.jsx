@@ -11,9 +11,9 @@ import 'assets/styles/transitions.css'
 import React from 'react'
 import { Slide, ToastContainer } from 'react-toastify'
 
-import { ConnectMetamask } from '../lib/components/ConnectMetamask'
-import EthersWrapper from '../lib/components/EthersWrapper'
-import { Meta } from '../lib/components/Meta'
+import { ConnectMetamask } from 'lib/components/ConnectMetamask'
+import EthersWrapper from 'lib/components/EthersWrapper'
+import { Meta } from 'lib/components/Meta'
 
 // This page has no blocking data requirements
 // it'll be rendered as static HTML at build time
