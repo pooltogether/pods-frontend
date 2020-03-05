@@ -31,7 +31,9 @@ export function Layout({ children }) {
     />
     
     <EthersWrapper>
-      <ConnectMetaMask />
+      <div className='container mx-auto py-4'>
+        <ConnectMetaMask />
+      </div>
 
       {children}
     </EthersWrapper>
