@@ -32,7 +32,7 @@ export default function DefaultPod() {
   if (contractQuery.data) {
     const { contract } = contractQuery.data
     podMessage = <p>
-      {networkName} DaiPod is at <Link href={`/pods/${contract.address}`}><a className='underline'>{contract.address}</a></Link>
+      {networkName} DaiPod is at <Link href="/pods/[podAddress]" as={`/pods/${contract.address}`}><a className='underline'>{contract.address}</a></Link>
     </p>
   }
 

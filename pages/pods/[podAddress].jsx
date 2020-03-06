@@ -26,19 +26,23 @@ function Pod() {
       <div className='mb-8'>
         <Button onClick={() => router.push('/')}>Back</Button>
       </div>
-      <div className='mb-8'>
-        <PodJoinForm podAddress={podAddress} userAddress={account} />
-      </div>
-      <div className='mb-8'>
-        <PodWithdrawPendingForm podAddress={podAddress} userAddress={account} />
-      </div>
-      <div className='mb-8'>
-        <PodRedeemToPoolForm  podAddress={podAddress} userAddress={account} />
-      </div>
-      <div className='mb-8'>
-        <PodRedeemForm  podAddress={podAddress} userAddress={account} />
-      </div>
       <PodUserDetails podAddress={podAddress} userAddress={account} />
+      {account && 
+        <>
+          <div className='mb-8'>
+            <PodJoinForm podAddress={podAddress} userAddress={account} />
+          </div>
+          <div className='mb-8'>
+            <PodWithdrawPendingForm podAddress={podAddress} userAddress={account} />
+          </div>
+          <div className='mb-8'>
+            <PodRedeemToPoolForm  podAddress={podAddress} userAddress={account} />
+          </div>
+          <div className='mb-8'>
+            <PodRedeemForm  podAddress={podAddress} userAddress={account} />
+          </div>
+        </>
+      }
     </div>
   )
 }

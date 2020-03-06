@@ -45,7 +45,7 @@ export default function PodJoinForm({ podAddress, userAddress }) {
       userAddress,
       tokenAddress
     },
-    skip: !tokenAddress
+    skip: !tokenAddress || !userAddress
   })
 
   let transactions = useQuery(transactionsQuery)

@@ -11,7 +11,8 @@ import 'assets/styles/transitions.css'
 import React from 'react'
 import { Slide, ToastContainer } from 'react-toastify'
 
-import { ConnectMetaMask } from 'lib/components/ConnectMetaMask'
+import { OnboardWrapper } from 'lib/components/OnboardWrapper'
+import { ConnectWallet } from 'lib/components/ConnectWallet'
 import EthersWrapper from 'lib/components/EthersWrapper'
 import { Meta } from 'lib/components/Meta'
 
@@ -30,12 +31,12 @@ export function Layout({ children }) {
       transition={Slide}
     />
     
-    <EthersWrapper>
+    <OnboardWrapper>
       <div className='container mx-auto py-4'>
-        <ConnectMetaMask />
+        <ConnectWallet />
       </div>
 
       {children}
-    </EthersWrapper>
+    </OnboardWrapper>
   </>
 }
