@@ -32,7 +32,7 @@ export function PodRedeemForm({ podAddress, userAddress }) {
 
   const [redeem, redeemResult] = useMutation(gql`
     mutation redeemMutation($podAddress: String!, $amount: Float!) {
-      sendTransaction(abi: "Pod", address: $podAddress, fn: "redeem", params: [$amount, "0x0"]) @client
+      sendTransaction(abi: "Pod", address: $podAddress, fn: "redeem", params: [$amount, "0x0"], gasLimit: 900000) @client
     }
   `, {
     variables: {
@@ -60,7 +60,7 @@ export function PodRedeemForm({ podAddress, userAddress }) {
   }
 
   return (
-    <form className="w-full max-w-sm">
+    <form className="w-full max-w-sm" onSubmit={(e) => { e.preventDefault(); redeem(); } }>
       <div className="md:flex md:items-center mb-6">
         <div className="md:w-1/3">
           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="inline-full-name">
@@ -74,7 +74,7 @@ export function PodRedeemForm({ podAddress, userAddress }) {
             type="text"
             placeholder="enter amount"
             value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            onChange={(e) => { e.preventDefault(); setAmount(e.target.value) } }
             />
         </div>
       </div>

@@ -13,7 +13,6 @@ import { Slide, ToastContainer } from 'react-toastify'
 
 import { OnboardWrapper } from 'lib/components/OnboardWrapper'
 import { ConnectWallet } from 'lib/components/ConnectWallet'
-import EthersWrapper from 'lib/components/EthersWrapper'
 import { Meta } from 'lib/components/Meta'
 
 // This page has no blocking data requirements

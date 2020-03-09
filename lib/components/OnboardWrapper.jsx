@@ -29,10 +29,13 @@ export function OnboardWrapper({ children }) {
           }
           setWallet(wallet)
           if (wallet) {
-            console.log("set apollo client", wallet)
-            web3Provider = new ethers.providers.Web3Provider(wallet.provider)
-            apolloClient = newApolloClient({ provider: web3Provider })
-            setApolloClient({ web3Provider, apolloClient })
+            console.log('wallet check....', { wallet })
+            onboard.walletCheck().then(ready => {
+              console.log('connect wallet check: ', { ready })
+              web3Provider = new ethers.providers.Web3Provider(wallet.provider)
+              apolloClient = newApolloClient({ provider: web3Provider })
+              setApolloClient({ web3Provider, apolloClient })
+            })
           } else {
             console.log("reset apollo client")
             web3Provider = new ethers.providers.InfuraProvider("kovan", process.env.NEXT_JS_INFURA_KEY)
@@ -53,6 +56,7 @@ export function OnboardWrapper({ children }) {
         }
       }
     })
+    onboard.walletReset()
     window.onboard = onboard
   }
 

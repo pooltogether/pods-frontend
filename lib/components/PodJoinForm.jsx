@@ -7,6 +7,7 @@ import { Button } from 'lib/components/Button'
 import { tokenQuery } from 'lib/queries/tokenQuery'
 import { transactionsQuery } from 'lib/queries/transactionsQuery'
 import { podUserQuery } from 'lib/queries/podUserQuery'
+import { podQuery } from 'lib/queries/podQuery'
 import { poolQuery } from 'lib/queries/poolQuery'
 
 export default function PodJoinForm({ podAddress, userAddress }) {
@@ -22,12 +23,16 @@ export default function PodJoinForm({ podAddress, userAddress }) {
 
   const weiAmount = ethers.utils.parseEther(amount || '0')
 
+  let pod = useQuery(podQuery, {
+    variables: { podAddress }
+  })
+
+  let poolAddress = pod.data ? pod.data.poolAddress : null
+
   let podUser = useQuery(podUserQuery, {
     variables: { podAddress, userAddress },
     skip: !userAddress || !podAddress
   })
-
-  let poolAddress = podUser.data ? podUser.data.poolAddress : null
 
   let pool = useQuery(poolQuery, {
     variables: {
@@ -38,6 +43,8 @@ export default function PodJoinForm({ podAddress, userAddress }) {
   })
 
   let tokenAddress = pool.data ? pool.data.tokenAddress : null
+
+  // console.log({ podAddress, userAddress, poolAddress, tokenAddress })
 
   let token = useQuery(tokenQuery, {
     variables: {
@@ -73,7 +80,7 @@ export default function PodJoinForm({ podAddress, userAddress }) {
 
   const [deposit, depositResult] = useMutation(gql`
     mutation depositMutation($podAddress: String!, $amount: Float!) {
-      sendTransaction(abi: "Pod", address: $podAddress, fn: "deposit", params: [$amount, "0x0"]) @client
+      sendTransaction(abi: "Pod", address: $podAddress, fn: "deposit", params: [$amount, "0x0"], gasLimit: 900000) @client
     }
   `, {
     variables: {
@@ -110,7 +117,7 @@ export default function PodJoinForm({ podAddress, userAddress }) {
   }
 
   return (
-    <form className="w-full max-w-sm">
+    <form className="w-full max-w-sm" onSubmit={(e) => { e.preventDefault(); needsApproval ? approve() : deposit() } }>
       <div className="md:flex md:items-center mb-6">
         <div className="md:w-1/3">
           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="inline-full-name">
@@ -124,7 +131,7 @@ export default function PodJoinForm({ podAddress, userAddress }) {
             type="text"
             placeholder="enter amount"
             value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            onChange={(e) => { e.preventDefault(); setAmount(e.target.value) } }
             />
         </div>
       </div>

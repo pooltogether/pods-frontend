@@ -32,7 +32,7 @@ export function PodRedeemToPoolForm({ podAddress, userAddress }) {
 
   const [redeemToPool, redeemToPoolResult] = useMutation(gql`
     mutation redeemToPoolMutation($podAddress: String!, $amount: Float!) {
-      sendTransaction(abi: "Pod", address: $podAddress, fn: "redeemToPool", params: [$amount, "0x0"]) @client
+      sendTransaction(abi: "Pod", address: $podAddress, fn: "redeemToPool", params: [$amount, "0x0"], gasLimit: 1000000) @client
     }
   `, {
     variables: {
@@ -60,7 +60,7 @@ export function PodRedeemToPoolForm({ podAddress, userAddress }) {
   }
 
   return (
-    <form className="w-full max-w-sm">
+    <form className="w-full max-w-sm" onSubmit={(e) => { e.preventDefault(); redeemToPool() } }>
       <div className="md:flex md:items-center mb-6">
         <div className="md:w-1/3">
           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="inline-full-name">
@@ -74,7 +74,7 @@ export function PodRedeemToPoolForm({ podAddress, userAddress }) {
             type="text"
             placeholder="enter amount"
             value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            onChange={(e) => { e.preventDefault(); setAmount(e.target.value) } }
             />
         </div>
       </div>
