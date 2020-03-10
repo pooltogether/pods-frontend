@@ -80,7 +80,7 @@ export default function PodJoinForm({ podAddress, userAddress }) {
 
   const [deposit, depositResult] = useMutation(gql`
     mutation depositMutation($podAddress: String!, $amount: Float!) {
-      sendTransaction(abi: "Pod", address: $podAddress, fn: "deposit", params: [$amount, "0x0"], gasLimit: 900000) @client
+      sendTransaction(abi: "Pod", address: $podAddress, fn: "deposit", params: [$amount, "0x0"], gasLimit: 1000000) @client
     }
   `, {
     variables: {
@@ -129,7 +129,7 @@ export default function PodJoinForm({ podAddress, userAddress }) {
             className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
             id="inline-full-name"
             type="text"
-            placeholder="enter amount"
+            placeholder="enter Dai amount"
             value={amount}
             onChange={(e) => { e.preventDefault(); setAmount(e.target.value) } }
             />

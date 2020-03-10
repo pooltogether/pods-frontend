@@ -1346,7 +1346,7 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@toruslabs/fetch-node-details@^2.0.1":
+"@toruslabs/fetch-node-details@^2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@toruslabs/fetch-node-details/-/fetch-node-details-2.0.2.tgz#e2f1c2eb3d3e4e1ca1a5bb5baa10ddc286341373"
   integrity sha512-kn4VZMIjZ19dJiaKPcTcd19LV4V45lDvfYl14CWwdHpxtBX1Mxkog85jU6l1mUh6cPgRfR0lcksn9rEr7kBLGQ==
@@ -1354,30 +1354,30 @@
     web3-eth-contract "^1.2.6"
     web3-utils "^1.2.6"
 
-"@toruslabs/torus-embed@^0.2.11":
-  version "0.2.14"
-  resolved "https://registry.yarnpkg.com/@toruslabs/torus-embed/-/torus-embed-0.2.14.tgz#cf2a01f5553c8e86b28f3b487da39d094f8d7266"
-  integrity sha512-c/AVy2FzvukVceNzAUcO8f500fl6wR+nfavUfD+BMq8qhka5uMKwdyxda21wVudgwdgfcIu+SDga8iDlY+W1bQ==
+"@toruslabs/torus-embed@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@toruslabs/torus-embed/-/torus-embed-1.1.1.tgz#a6c17742310c342677ed94fc3c26f4a8944e18d8"
+  integrity sha512-tYiU854xuWkGaLhT366jDs9IHze/b/LWjjRXi43EyQpuyD556sA+cFJGkadBsdQtx8bhtTwO8NEYTGStt7RcHA==
   dependencies:
     "@chaitanyapotti/random-id" "^1.0.3"
-    "@toruslabs/fetch-node-details" "^2.0.1"
-    "@toruslabs/torus.js" "^1.0.6"
-    eth-json-rpc-errors "^2.0.1"
+    "@toruslabs/fetch-node-details" "^2.0.2"
+    "@toruslabs/torus.js" "^1.0.7"
+    eth-json-rpc-errors "^2.0.2"
     fast-deep-equal "^3.1.1"
-    json-rpc-engine "^5.1.6"
+    json-rpc-engine "^5.1.8"
     json-rpc-middleware-stream "^2.1.1"
-    loglevel "^1.6.6"
+    loglevel "^1.6.7"
     obj-multiplex "^1.0.0"
     obs-store "^4.0.3"
     post-message-stream "^3.0.0"
     pump "^3.0.0"
-    readable-stream "^3.5.0"
+    readable-stream "^3.6.0"
     safe-event-emitter "^1.0.1"
     sri-toolbox "^0.2.0"
     through2 "^3.0.1"
     web3 "^0.20.7"
 
-"@toruslabs/torus.js@^1.0.6":
+"@toruslabs/torus.js@^1.0.7":
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/@toruslabs/torus.js/-/torus.js-1.0.7.tgz#3940cabfff0b5306568d97a3556b66b030a17ce3"
   integrity sha512-JB2xSOgRRWTX57DRDUbGWjEJdAeNZjWUPfucg0M8RmqH3eETjwuBpA0ECi7e7gZKuZ0D34pBTn+a1TPBYLfTLA==
@@ -2106,10 +2106,10 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-authereum@^0.0.4-beta.88:
-  version "0.0.4-beta.107"
-  resolved "https://registry.yarnpkg.com/authereum/-/authereum-0.0.4-beta.107.tgz#df6df81a0e5e4f77fb461b097d0d6eae096ec5ff"
-  integrity sha512-mGCcjdC7ISPqows7WTdbTaPetTC2jExISUUqybZlHfrcpU5Fe6sVsNfmc9QbkQivDumwgSiCyr3I+cQ8eb2nMQ==
+authereum@^0.0.4-beta.112, authereum@^0.0.4-beta.88:
+  version "0.0.4-beta.112"
+  resolved "https://registry.yarnpkg.com/authereum/-/authereum-0.0.4-beta.112.tgz#7de6a919abff8c9924ea26190c097c58f7baf961"
+  integrity sha512-kLFw+lweb5xvXg+MfJvn6pY8y7xKYCZfboj5CE19rGZqxvr4Vb1vIQWJVYIF+1RUBvDTdL4zozU8NQfrqe6RZA==
   dependencies:
     async "^3.1.0"
     bnc-notify "^0.2.1"
@@ -2122,7 +2122,7 @@ authereum@^0.0.4-beta.88:
     pify "^4.0.1"
     rollup-plugin-commonjs "^10.1.0"
     store "^2.0.12"
-    to-hex "0.0.7"
+    to-hex "0.0.9"
     web3-provider-engine "^15.0.4"
     web3-utils "^1.2.1"
 
@@ -2882,15 +2882,15 @@ bnc-notify@^0.2.1:
     lodash.debounce "^4.0.8"
     uuid "^3.3.3"
 
-bnc-onboard@^1.3.3:
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/bnc-onboard/-/bnc-onboard-1.3.3.tgz#3c275f5dfd0eb52a58d751e164e489c29eb24cf6"
-  integrity sha512-YAnK0jQM6hZrSwgd1Gm2VGNhOjH9NxeLhkGpasRiVx9AkBjUAw1qDvH8rAX77CNQk/sIIOLh1UYWxJVlb4qENQ==
+bnc-onboard@^1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/bnc-onboard/-/bnc-onboard-1.3.4.tgz#d67100226f0a80c9a9c6d50dd4fe8fb669ebb5c9"
+  integrity sha512-L8VZvWGbGiio4UZPtpOIAkntKB+BINHmOeBTLPMn2n3EdOA4JHmGe/Mk6HlZdVaWcYirtpUBw3m/XKDQiGZfcA==
   dependencies:
     "@ledgerhq/hw-app-eth" "^5.7.0"
     "@ledgerhq/hw-transport-u2f" "^5.7.0"
     "@portis/web3" "^2.0.0-beta.42"
-    "@toruslabs/torus-embed" "^0.2.11"
+    "@toruslabs/torus-embed" "^1.1.1"
     "@walletconnect/web3-provider" "^1.0.0-beta.45"
     authereum "^0.0.4-beta.88"
     bignumber.js "^9.0.0"
@@ -6385,7 +6385,7 @@ json-rpc-engine@^3.4.0, json-rpc-engine@^3.6.0:
     promise-to-callback "^1.0.0"
     safe-event-emitter "^1.0.1"
 
-json-rpc-engine@^5.0.0, json-rpc-engine@^5.1.3, json-rpc-engine@^5.1.6:
+json-rpc-engine@^5.0.0, json-rpc-engine@^5.1.3, json-rpc-engine@^5.1.8:
   version "5.1.8"
   resolved "https://registry.yarnpkg.com/json-rpc-engine/-/json-rpc-engine-5.1.8.tgz#5ba0147ce571899bbaa7133ffbc05317c34a3c7f"
   integrity sha512-vTBSDEPJV1fPAsbm2g5sEuPjsgLdiab2f1CTn2PyRr8nxggUpA996PDlNQDsM0gnrA99F8KIBLq2nIKrOFl1Mg==
@@ -6909,7 +6909,7 @@ log-symbols@^2.2.0:
   dependencies:
     chalk "^2.0.1"
 
-loglevel@^1.6.6, loglevel@^1.6.7:
+loglevel@^1.6.7:
   version "1.6.7"
   resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.6.7.tgz#b3e034233188c68b889f5b862415306f565e2c56"
   integrity sha512-cY2eLFrQSAfVPhCgH1s7JI73tMbg9YC3v3+ZHVW67sBS7UxWzNEk/ZBbSfLykBWHp33dqqtOv82gjhKEi81T/A==
@@ -8946,7 +8946,7 @@ read-pkg@^3.0.0:
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
 
-"readable-stream@2 || 3", readable-stream@^3.5.0:
+"readable-stream@2 || 3", readable-stream@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.6.0.tgz#337bbda3adc0706bd3e024426a286d4b4b2c9198"
   integrity sha512-BViHy7LKeTz4oNnkcLJ+lVSL6vpiFeX6/d3oSH8zCW7UxP2onchk+vTGB143xuFjHS3deTgkKoXXymXqymiIdA==
@@ -10308,10 +10308,10 @@ to-fast-properties@^2.0.0:
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-2.0.0.tgz#dc5e698cbd079265bc73e0377681a4e4e83f616e"
   integrity sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=
 
-to-hex@0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/to-hex/-/to-hex-0.0.7.tgz#9f9fbc6d99bc10d0017d333d175fea3aaadc0145"
-  integrity sha512-zZfNNlhEWWrj+CEopVGy+nLUXHfMS3qLnXMO7EyDBLJXUwxjRFXIjF4f/az/0c8wDxLOMXjoZHmHTSSRJOId2w==
+to-hex@0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/to-hex/-/to-hex-0.0.9.tgz#310ac7e35068f77b6d4c6bb09e0a3fd024a50c26"
+  integrity sha512-lc37anEf0hOPWt7EliqR+9ZoV4/foxtZPn0aUBVBa2NGhHKenmooSZOZwv+u+Ug47fNpoDKLeEBGkAmQWViGUw==
   dependencies:
     normalize-hex "0.0.2"
 
