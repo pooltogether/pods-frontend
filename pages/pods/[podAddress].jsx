@@ -24,7 +24,7 @@ function Pod() {
   return (
     <div className='container mx-auto mt-12'>
       <div className='mb-8'>
-        <Button onClick={() => router.push('/')}>Back</Button>
+        <span className='text-blue-500 underline cursor-pointer' onClick={() => router.push('/')}>Back</span>
       </div>
       <PodUserDetails podAddress={podAddress} userAddress={account} />
       {account && 

@@ -10,7 +10,7 @@ export function ConnectWallet() {
 
   let result = null
   if (wallet) {
-    result = <Button onClick={() => onboard.walletReset()}>Disconnect</Button>
+    result = <Button color='blue' onClick={() => onboard.walletReset()}>Disconnect</Button>
   } else {
     result = <Button onClick={() => onboard.walletSelect()}>Connect Wallet</Button>
   }
