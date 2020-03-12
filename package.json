@@ -17,7 +17,7 @@
     "@next/bundle-analyzer": "^9.2.1",
     "@pooltogether/pods": "^0.2.1",
     "@pooltogether/pooltogether-contracts": "^0.2.7",
-    "@pooltogether/tightbeam": "^1.0.10",
+    "@pooltogether/tightbeam": "^1.0.11",
     "@types/react": "^16.9.23",
     "@zeit/next-css": "^1.0.1",
     "apollo-cache-inmemory": "^1.6.5",
