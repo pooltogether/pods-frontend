@@ -109,11 +109,11 @@ export default function PodJoinForm({ podAddress, userAddress }) {
   }
 
   let needsApproval = true
-  let sufficientBalance = false
+  // let sufficientBalance = false
 
   if (!loading && !error && token.data) {
     needsApproval = token.data.allowance.lt(ethers.utils.bigNumberify(weiAmount))
-    sufficientBalance = token.data.balance.gte(ethers.utils.bigNumberify(weiAmount))
+    // sufficientBalance = token.data.balance.gte(ethers.utils.bigNumberify(weiAmount))
   }
 
   return (
