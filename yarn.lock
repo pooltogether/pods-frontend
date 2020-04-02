@@ -1206,7 +1206,18 @@
     "@openzeppelin/upgrades" "^2.7.1"
     "@pooltogether/pooltogether-contracts" pooltogether/pooltogether-contracts#master
 
-"@pooltogether/pooltogether-contracts@^0.2.9", "@pooltogether/pooltogether-contracts@pooltogether/pooltogether-contracts#master":
+"@pooltogether/pooltogether-contracts@^0.2.10":
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/@pooltogether/pooltogether-contracts/-/pooltogether-contracts-0.2.10.tgz#9b3544d698134c0684fa0042b99ea87fcccb3aee"
+  integrity sha512-7aW9UNw7i3xT+kXuTmjCgwtM6qul+yxiayLdKScp38qVmYvPDXPPb4M0KeEqwZ1WBkpYzeuDODrZKSNkbbL2TQ==
+  dependencies:
+    "@kleros/kleros" DeltaCamp/kleros#ca7fbdcc195cfd1267efb99aae905c3400a5ea5f
+    "@openzeppelin/contracts-ethereum-package" "2.4.0"
+    "@openzeppelin/upgrades" "2.5.1"
+    fixidity DeltaCamp/Fixidity#edf533f77df43b16a7b92f17af7a8930db01f293
+    scd-mcd-migration pooltogether/scd-mcd-migration
+
+"@pooltogether/pooltogether-contracts@pooltogether/pooltogether-contracts#master":
   version "0.2.9"
   resolved "https://codeload.github.com/pooltogether/pooltogether-contracts/tar.gz/95046d60f135e26360b9790349151a9625d6599e"
   dependencies:
