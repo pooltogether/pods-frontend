@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import Link from 'next/link'
 
-export default function DefaultPod() {
+export default function DefaultPod({ podName }) {
   const router = useRouter()
 
   let networkQuery = useQuery(gql`
@@ -18,7 +18,7 @@ export default function DefaultPod() {
 
   let contractQuery = useQuery(gql`
     query {
-      contract(name: "DaiPod") @client
+      contract(name: podName) @client
     }
   `)
 
@@ -32,7 +32,7 @@ export default function DefaultPod() {
   if (contractQuery.data) {
     const { contract } = contractQuery.data
     podMessage = <p>
-      {networkName} DaiPod is at <Link href="/pods/[podAddress]" as={`/pods/${contract.address}`}><a className='underline'>{contract.address}</a></Link>
+      <strong>{networkName} {podName} is at</strong>: {contract.address} <Link href="/pods/[podAddress]" as={`/pods/${contract.address}`}><a className='text-blue-500 hover:text-blue-300 underline trans'>View</a></Link>
     </p>
   }
 

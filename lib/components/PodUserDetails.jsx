@@ -61,16 +61,16 @@ export function PodUserDetails({ podAddress, userAddress }) {
     }
     result = (
       <div>
-        <p>Pod address: {podAddress}</p>
-        <p>Pool Address: {podData.poolAddress}</p>
-        <p>Pool Open Draw Id: {poolData.openDrawId.toString()}</p>
-        <p>Pod Pool Committed Balance: {ethers.utils.formatEther(poolData.committedBalance)}</p>
-        <p>Pod Pool Open Balance: {ethers.utils.formatEther(poolData.openBalance)}</p>
-        <p>Account: {userAddress}</p>
-        <p>User Token Balance: {tokenData ? ethers.utils.formatEther(tokenData.balance) : '?'}</p>
-        <p>User Pod Balance: {podUserData ? ethers.utils.formatEther(podUserData.balance) : '?'}</p>
-        <p>User Pod Balance (underyling): {podUserData ? ethers.utils.formatEther(podUserData.balanceUnderlying) : '?'}</p>
-        <p>User Pod Pending Deposit: {podUserData ? ethers.utils.formatEther(podUserData.pendingDeposit) : '?'}</p>
+        <p className='mb-1 font-mono'><span className='font-bold'>Pod Address</span>:&nbsp; <a className='text-blue-500 hover:text-blue-300 trans underline' href={`https://kovan.etherscan.io/address/${podAddress}`}>{podAddress}</a></p>
+        <p className='mb-6 font-mono'><span className='font-bold'>Pool Address</span>: <a className='text-blue-500 hover:text-blue-300 trans underline' href={`https://kovan.etherscan.io/address/${podData.poolAddress}`}>{podData.poolAddress}</a></p>
+        <p className='mb-1 font-mono'><span className='font-bold'>Pool Open Draw Id</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {poolData.openDrawId.toString()}</p>
+        <p className='mb-1 font-mono'><span className='font-bold'>Pool Committed Balance</span>: {ethers.utils.formatEther(poolData.committedBalance)}</p>
+        <p className='mb-6 font-mono'><span className='font-bold'>Pool Open Balance</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {ethers.utils.formatEther(poolData.openBalance)}</p>
+        <p className='mb-1 font-mono'><span className='font-bold'>User's Address</span>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a className='text-blue-500 hover:text-blue-300 trans underline' href={`https://kovan.etherscan.io/address/${userAddress}`}>{userAddress}</a></p>
+        <p className='mb-1 font-mono'><span className='font-bold'>User Token Balance</span>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {tokenData ? ethers.utils.formatEther(tokenData.balance) : '?'}</p>
+        <p className='mb-1 font-mono'><span className='font-bold'>User Pod Balance</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {podUserData ? ethers.utils.formatEther(podUserData.balance) : '?'}</p>
+        <p className='mb-1 font-mono'><span className='font-bold'>User Pod Balance (underyling)</span>: {podUserData ? ethers.utils.formatEther(podUserData.balanceUnderlying) : '?'}</p>
+        <p className='mb-6 font-mono'><span className='font-bold'>User Pod Pending Deposit</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {podUserData ? ethers.utils.formatEther(podUserData.pendingDeposit) : '?'}</p>
       </div>
     )
   }

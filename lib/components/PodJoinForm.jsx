@@ -109,16 +109,16 @@ export default function PodJoinForm({ podAddress, userAddress }) {
   }
 
   let needsApproval = true
-  let sufficientBalance = false
+  // let sufficientBalance = false
 
   if (!loading && !error && token.data) {
     needsApproval = token.data.allowance.lt(ethers.utils.bigNumberify(weiAmount))
-    sufficientBalance = token.data.balance.gte(ethers.utils.bigNumberify(weiAmount))
+    // sufficientBalance = token.data.balance.gte(ethers.utils.bigNumberify(weiAmount))
   }
 
   return (
-    <form className="w-full max-w-sm" onSubmit={(e) => { e.preventDefault(); needsApproval ? approve() : deposit() } }>
-      <div className="md:flex md:items-center mb-6">
+    <form className="w-full max-w-sm mt-5" onSubmit={(e) => { e.preventDefault(); needsApproval ? approve() : deposit() } }>
+      <div className="md:flex md:items-center mb-3">
         <div className="md:w-1/3">
           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="inline-full-name">
             Deposit

@@ -9,7 +9,8 @@ function HomePage() {
 
   return (
     <div className='container mx-auto mt-12'>
-      <DefaultPod />
+      <DefaultPod podName="DaiPod" />
+      <DefaultPod podName="UsdcPod" />
       <PodForm onOpen={(address) => router.push(`/pods/${address}`)}/>
     </div>
   )
