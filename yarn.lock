@@ -1197,27 +1197,16 @@
     web3-eth-contract "1.2.2"
     web3-utils "1.2.2"
 
-"@pooltogether/pods@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@pooltogether/pods/-/pods-0.2.1.tgz#346f815184f3e1c5b4387f3ccac8441c2489a711"
-  integrity sha512-NNEOWtOkWyTMOnH5wtCcKiKyTFkumwtQi9oOpAM0Qe6arQRNF/RWh1QbW8xc+MN/XcKGvBjsRPDY+ub4x9Xw2g==
+"@pooltogether/pods@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@pooltogether/pods/-/pods-0.3.0.tgz#1729131ea3c54b50bcab21ff154778409f80dc66"
+  integrity sha512-RTAcmVx3IWzGArITlh9fi5i4pndNdC+oCdVt5PklLkN9HlubLK5+F0pTm+9tz7vTjiondpCqsQL1OOiAWQgwrQ==
   dependencies:
     "@openzeppelin/contracts-ethereum-package" openzeppelin/openzeppelin-contracts-ethereum-package#c5fa02f0c502d9d28bdec601637fc548834c86c5
     "@openzeppelin/upgrades" "^2.7.1"
     "@pooltogether/pooltogether-contracts" pooltogether/pooltogether-contracts#master
 
-"@pooltogether/pooltogether-contracts@^0.2.7":
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/@pooltogether/pooltogether-contracts/-/pooltogether-contracts-0.2.7.tgz#c30d2b50f9c50e6df447e8ffd4373001d8ccc264"
-  integrity sha512-V/YA0JgbL/byBnkIU5ZE8yxIbXl4HaZzJ1szRmrM9i9anZXbDVNGMpqORG8c7OeuRcao/W/UX5jaFqvp+g37Wg==
-  dependencies:
-    "@kleros/kleros" DeltaCamp/kleros#ca7fbdcc195cfd1267efb99aae905c3400a5ea5f
-    "@openzeppelin/contracts-ethereum-package" "2.4.0"
-    "@openzeppelin/upgrades" "2.5.1"
-    fixidity DeltaCamp/Fixidity#edf533f77df43b16a7b92f17af7a8930db01f293
-    scd-mcd-migration pooltogether/scd-mcd-migration
-
-"@pooltogether/pooltogether-contracts@pooltogether/pooltogether-contracts#master":
+"@pooltogether/pooltogether-contracts@^0.2.9", "@pooltogether/pooltogether-contracts@pooltogether/pooltogether-contracts#master":
   version "0.2.9"
   resolved "https://codeload.github.com/pooltogether/pooltogether-contracts/tar.gz/95046d60f135e26360b9790349151a9625d6599e"
   dependencies:
